@@ -18,10 +18,20 @@ query → Tavily search → LLM report (with [n] citations) → rendered in brow
 
 ### 1. Backend
 
+Dependencies are managed with [uv](https://docs.astral.sh/uv/) (`pyproject.toml` +
+`uv.lock`).
+
 ```bash
 cd backend
-uv sync         
-uv run uvicorn app.main:app --reload    # runs on http://localhost:8000
+uv sync                                  # creates .venv and installs locked deps
+uv run uvicorn app.main:app --reload     # runs on http://localhost:8000
+```
+
+Create a `.env` file in `backend/` with your API keys:
+
+```
+groq_api_key=...
+tavily_api_key=...
 ```
 
 ### 2. Frontend
@@ -48,4 +58,6 @@ so both must be running.
 - Model / result count: `backend/app/config.py`
 - Report style / prompt: `backend/app/services/llm.py`
 - Search settings: `backend/app/services/search.py`
+- Backend dependencies: `backend/pyproject.toml` (run `uv add <pkg>` / `uv remove <pkg>`,
+  then commit the updated `uv.lock`)
 
