@@ -20,14 +20,9 @@ query → Tavily search → LLM report (with [n] citations) → rendered in brow
 
 ```bash
 cd backend
-uv sync
-cp .env.example .env             # then add your API keys
+uv sync         
 uv run uvicorn app.main:app --reload    # runs on http://localhost:8000
 ```
-
-Get keys at:
-- Groq: https://console.groq.com
-- Tavily: https://app.tavily.com
 
 ### 2. Frontend
 
