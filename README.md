@@ -56,9 +56,3 @@ so both must be running.
 - Report style / prompt: `backend/app/services/llm.py`
 - Search settings: `backend/app/services/search.py`
 
-## Possible next steps
-
-- Stream the report token-by-token (FastAPI `StreamingResponse` + SSE) for
-  faster perceived response.
-- Cache repeated queries.
-- Add Tavily `extract` on top URLs for deeper context.
