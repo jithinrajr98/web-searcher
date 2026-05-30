@@ -20,11 +20,9 @@ query → Tavily search → LLM report (with [n] citations) → rendered in brow
 
 ```bash
 cd backend
-python -m venv .venv
-source .venv/bin/activate        # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
+uv sync
 cp .env.example .env             # then add your API keys
-uvicorn app.main:app --reload    # runs on http://localhost:8000
+uv run uvicorn app.main:app --reload    # runs on http://localhost:8000
 ```
 
 Get keys at:
