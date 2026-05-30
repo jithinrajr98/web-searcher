@@ -1,15 +1,24 @@
 # Commit
-> Stage and commit recent changes to a new git branch. The branch name is derived from the commit message argument.
+> Stage and commit recent changes to a new git branch using an explicit branch name and commit message.
 
-## Argument
-The commit message is passed as `$ARGUMENTS`. If no argument is provided, ask the user for one.
+## Arguments
+Two arguments are passed as `$ARGUMENTS` in the format: `<branch-name> <commit message>`.
+- The first word is the branch name (e.g. `fix-login-bug`).
+- Everything after the first word is the commit message.
+If fewer than two arguments are provided, ask the user for the missing ones.
 
 ## Steps
 
 1. Run `git status` to see what has changed.
 2. Run `git diff` to understand what changed and why.
-3. Derive a branch name from `$ARGUMENTS` — lowercase, replace spaces with hyphens, strip special characters (e.g. `"fix login bug"` → `fix-login-bug`).
+3. Parse `$ARGUMENTS`: the first word is the branch name, the rest is the commit message.
 4. Create and switch to the new branch: `git checkout -b <branch-name>`.
 5. Stage relevant changed files (avoid secrets like `.env`).
-6. Commit using `$ARGUMENTS` as the commit message.
+6. Commit using the parsed commit message.
 7. Run `git status` to confirm success.
+
+## Example
+```
+/commit fix-login-bug fix null pointer in login handler
+```
+Branch: `fix-login-bug`, commit message: `fix null pointer in login handler`.
